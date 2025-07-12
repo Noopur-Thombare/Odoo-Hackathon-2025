@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Users</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <h2>Available Users for Skill Swap</h2>
+
+    {% if users %}
+        {% for user in users %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
+                <p><strong>{{ user['name'] if user['name'] else user['username'] }}</strong></p>
+                <p><strong>Offers:</strong> {{ user['skills_offered'] }}</p>
+                <p><strong>Needs:</strong> {{ user['skills_needed'] }}</p>
+                <p><strong>Availability:</strong> {{ user['availability'] }}</p>
+                <a href="/request_swap/{{ user['id'] }}">🔁 Request Swap</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No users available right now.</p>
+    {% endif %}
+
+    <hr>
+    <a href="/profile">⬅ Back to Profile</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>

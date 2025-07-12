@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Welcome, {{ session['username'] }}</h2>
+    <h3>Update Your Skill Profile</h3>
+    <form method="post">
+        <!-- Uncomment this only if 'name' is added to the DB -->
+        <!-- Name: <input name="name" value="{{ user['name'] or '' }}"><br> -->
+
+        Skills Offered: <input name="skills_offered" value="{{ user['skills_offered'] or '' }}"><br>
+        Skills Needed: <input name="skills_needed" value="{{ user['skills_needed'] or '' }}"><br>
+        Availability:
+        <select name="availability">
+            <option value="Weekdays" {% if user['availability'] == 'Weekdays' %}selected{% endif %}>Weekdays</option>
+            <option value="Weekends" {% if user['availability'] == 'Weekends' %}selected{% endif %}>Weekends</option>
+            <option value="Anytime" {% if user['availability'] == 'Anytime' %}selected{% endif %}>Anytime</option>
+        </select><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <hr>
+    <a href="/browse">Browse Users</a> |
+    <a href="/my_swaps">My Swaps</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>

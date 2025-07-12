@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Swap Requests</title></head>
+<body>
+    <h2>Incoming Swap Requests</h2>
+    {% for swap in swaps %}
+        <div style="margin-bottom:10px;">
+            <b>{{ swap['name'] }}</b> wants to swap.<br>
+            Status: {{ swap['status'] }}<br>
+            {% if swap['status'] == 'pending' %}
+                <form method="post" action="/respond_swap/{{ swap['id'] }}">
+                    <button name="response" value="accepted">Accept</button>
+                    <button name="response" value="rejected">Reject</button>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <a href="/profile">Back to Profile</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>
