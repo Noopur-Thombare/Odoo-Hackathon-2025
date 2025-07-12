@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,5 +25,33 @@
     <hr>
     <a href="/profile">⬅ Back to Profile</a> |
     <a href="/logout">Logout</a>
+=======
+<html>
+<head>
+    <title>Browse Profiles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Browse Skill Swap Profiles</h2>
+    <div class="row mt-4">
+        {% for profile in profiles %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile[1] }}</h5>
+                    <p><strong>Skills Offered:</strong> {{ profile[2] }}</p>
+                    <p><strong>Skills Needed:</strong> {{ profile[3] }}</p>
+                    <p><strong>Availability:</strong> {{ profile[4] }}</p>
+                    <form action="/request_swap" method="POST">
+                        <input type="hidden" name="receiver_name" value="{{ profile[1] }}">
+                        <input type="submit" value="Request Swap" class="btn btn-sm btn-success">
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+>>>>>>> d287679bf1a62fa0d2e674c94f65881bba75e939
 </body>
 </html>

@@ -1,5 +1,6 @@
 import sqlite3
 
+<<<<<<< HEAD
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
 
@@ -31,3 +32,25 @@ CREATE TABLE IF NOT EXISTS swaps (
 conn.commit()
 conn.close()
 print("✅ Database, users table, and swaps table created.")
+=======
+# Connect to database (or create if it doesn't exist)
+conn = sqlite3.connect('database.db')
+c = conn.cursor()
+
+# Create table for profiles
+c.execute('''
+    CREATE TABLE IF NOT EXISTS profiles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        skills_offered TEXT,
+        skills_needed TEXT,
+        availability TEXT
+    )
+''')
+
+# Save and close
+conn.commit()
+conn.close()
+
+print("✅ profiles table created!")
+>>>>>>> d287679bf1a62fa0d2e674c94f65881bba75e939
